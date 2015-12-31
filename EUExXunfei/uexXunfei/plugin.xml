@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<uexplugins>
+    <plugin name="uexXunfei">
+        <method name="init"></method>
+        <method name="initSpeaker"></method>
+        <method name="startSpeaking"></method>
+        <method name="initRecognizer"></method>
+        <method name="startListening"></method>
+        
+    </plugin>
+    
+    
+</uexplugins>
