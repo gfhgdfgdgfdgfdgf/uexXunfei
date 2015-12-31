@@ -52,13 +52,13 @@
     NSString *voiceName=@"xiaoyan";
     if(inArguments.count >0){
         NSDictionary *info = [inArguments[0] JSONValue];
-        if([info objectForKey:@"speed"]){
+        if([[info objectForKey:@"speed"] length]){
             speed=[info objectForKey:@"speed"];
         }
-        if([info objectForKey:@"volume"]){
+        if([[info objectForKey:@"volume"] length]){
             volume=[info objectForKey:@"volume"];
         }
-        if([info objectForKey:@"voiceName"]){
+        if([[info objectForKey:@"voiceName"] length]){
             voiceName=[info objectForKey:@"voiceName"];
         }
     }
@@ -84,6 +84,19 @@
     }
     [_iFlySpeechSynthesizer startSpeaking: text];
 }
+//取消合成
+-(void)stopSpeaking:(NSMutableArray *)inArguments{
+     [_iFlySpeechSynthesizer stopSpeaking];
+}
+//暂停播放
+-(void)pauseSpeaking:(NSMutableArray *)inArguments{
+    [_iFlySpeechSynthesizer pauseSpeaking];
+}
+// 恢复播放
+-(void)resumeSpeaking:(NSMutableArray *)inArguments{
+    [_iFlySpeechSynthesizer resumeSpeaking];
+}
+
 
 //合成结束
 - (void) onCompleted:(IFlySpeechError *) error{
@@ -126,13 +139,13 @@
     NSString *accent=@"mandarin";
     if(inArguments.count >0){
         NSDictionary *info = [inArguments[0] JSONValue];
-        if([info objectForKey:@"domain"]){
+        if([[info objectForKey:@"domain"] length]){
             domain=[info objectForKey:@"domain"];
         }
-        if([info objectForKey:@"language"]){
+        if([[info objectForKey:@"language"] length]){
             language=[info objectForKey:@"language"];
         }
-        if([info objectForKey:@"accent"]){
+        if([[info objectForKey:@"accent"] length]){
             accent=[info objectForKey:@"accent"];
         }
     }
@@ -176,6 +189,16 @@
     //启动识别服务
     [_iFlySpeechRecognizer startListening];
 }
+//停止录音
+-(void)stopListening:(NSMutableArray *)inArguments{
+    [_iFlySpeechRecognizer stopListening];
+}
+
+//取消听写
+-(void)cancelListening:(NSMutableArray *)inArguments{
+    [_iFlySpeechRecognizer cancel];
+}
+
 //开始语音识别
 - (void) onBeginOfSpeech{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onBeginOfSpeech != null){uexXunfei.onBeginOfSpeech();}"];

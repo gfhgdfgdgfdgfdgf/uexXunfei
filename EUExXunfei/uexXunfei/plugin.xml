@@ -4,8 +4,14 @@
         <method name="init"></method>
         <method name="initSpeaker"></method>
         <method name="startSpeaking"></method>
+        <method name="stopSpeaking"></method>
+        <method name="pauseSpeaking"></method>
+        <method name="resumeSpeaking"></method>
+        
         <method name="initRecognizer"></method>
         <method name="startListening"></method>
+        <method name="stopListening"/>
+        <method name="cancelListening"/>
         
     </plugin>
     
