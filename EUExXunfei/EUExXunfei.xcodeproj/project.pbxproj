@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C4CD38D1C3532E200E01902 /* uexXunFeiResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4CD38C1C3532E200E01902 /* uexXunFeiResponder.m */; };
 		3C81DF851C337CE90025DD6A /* EUExXunfei.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C81DF841C337CE90025DD6A /* EUExXunfei.m */; };
 		3C81DFC61C33A3030025DD6A /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C81DFC51C33A3030025DD6A /* iflyMSC.framework */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C4CD3881C35227000E01902 /* EBrowserWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserWindow.h; sourceTree = "<group>"; };
+		3C4CD3891C3522FD00E01902 /* EBrowserWindowContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserWindowContainer.h; sourceTree = "<group>"; };
+		3C4CD38A1C35231500E01902 /* ACEUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEUtils.h; sourceTree = "<group>"; };
+		3C4CD38B1C3532D600E01902 /* uexXunFeiResponder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uexXunFeiResponder.h; sourceTree = "<group>"; };
+		3C4CD38C1C3532E200E01902 /* uexXunFeiResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uexXunFeiResponder.m; sourceTree = "<group>"; };
 		3C81DF7F1C337CE90025DD6A /* libuexXunfei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexXunfei.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C81DF821C337CE90025DD6A /* EUExXunfei.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExXunfei.h; sourceTree = "<group>"; };
 		3C81DF841C337CE90025DD6A /* EUExXunfei.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExXunfei.m; sourceTree = "<group>"; };
@@ -83,6 +89,8 @@
 				3C81DF9A1C33810B0025DD6A /* engineHeader */,
 				3C81DF821C337CE90025DD6A /* EUExXunfei.h */,
 				3C81DF841C337CE90025DD6A /* EUExXunfei.m */,
+				3C4CD38B1C3532D600E01902 /* uexXunFeiResponder.h */,
+				3C4CD38C1C3532E200E01902 /* uexXunFeiResponder.m */,
 			);
 			path = EUExXunfei;
 			sourceTree = "<group>";
@@ -90,6 +98,9 @@
 		3C81DF9A1C33810B0025DD6A /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
+				3C4CD38A1C35231500E01902 /* ACEUtils.h */,
+				3C4CD3891C3522FD00E01902 /* EBrowserWindowContainer.h */,
+				3C4CD3881C35227000E01902 /* EBrowserWindow.h */,
 				3C81DF9B1C33810B0025DD6A /* EUExBase+Bundle.h */,
 				3C81DF9C1C33810B0025DD6A /* EUExBase.h */,
 				3C81DF9D1C33810B0025DD6A /* EUExBaseDefine.h */,
@@ -180,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C4CD38D1C3532E200E01902 /* uexXunFeiResponder.m in Sources */,
 				3C81DF851C337CE90025DD6A /* EUExXunfei.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

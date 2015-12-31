@@ -7,7 +7,19 @@
 //
 
 #import "EUExXunfei.h"
+#import "JSON/JSON.h"
+#import "EUtility.h"
+#import "iflyMSC/IFlyMSC.h"
+#import "EBrowserWindow.h"
+#import "EBrowserWindowContainer.h"
+#import "uexXunFeiResponder.h"
 
+@interface EUExXunfei()<IFlySpeechSynthesizerDelegate,IFlySpeechRecognizerDelegate>
+@property (nonatomic,strong) IFlySpeechSynthesizer * iFlySpeechSynthesizer;
+@property (nonatomic,strong) IFlySpeechRecognizer *iFlySpeechRecognizer;
+    
+
+@end
 
 @implementation EUExXunfei
 
@@ -29,6 +41,9 @@
         NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",appId];
         [IFlySpeechUtility createUtility:initString];
         [result setObject:[NSNumber numberWithBool:YES] forKey:@"result"];
+        
+        [uexXunFeiResponder sharedResponder].specifiedReceiver=meBrwView;
+        
     }
     else{
         [result setObject:[NSNumber numberWithBool:NO] forKey:@"result"];
@@ -101,12 +116,12 @@
 //合成结束
 - (void) onCompleted:(IFlySpeechError *) error{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakComplete != null){uexXunfei.onSpeakComplete();}"];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 //合成开始
 - (void) onSpeakBegin{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakBegin != null){uexXunfei.onSpeakBegin();}"];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 //合成缓冲进度
 - (void) onBufferProgress:(int) progress message:(NSString *)msg{
@@ -120,13 +135,13 @@
 //合成暂停回调
 - (void)onSpeakPaused{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakPaused != null){uexXunfei.onSpeakPaused();}"];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 
 //恢复合成回调
 - (void)onSpeakResumed{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakResumed != null){uexXunfei.onSpeakResumed();}"];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 //取消合成回调
 - (void)onSpeakCancel{
@@ -202,12 +217,12 @@
 //开始语音识别
 - (void) onBeginOfSpeech{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onBeginOfSpeech != null){uexXunfei.onBeginOfSpeech();}"];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 //停止识别回调
 - (void) onEndOfSpeech{
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onEndOfSpeech != null){uexXunfei.onEndOfSpeech();}"];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 /*识别结果返回代理
  @param resultArray 识别结果
@@ -225,7 +240,7 @@
     
     NSString * resultString=[result JSONFragment];
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeResult != null){uexXunfei.onRecognizeResult('%@');}",resultString];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 }
 /*识别会话错误返回代理
  @ param  error 错误码
@@ -241,7 +256,7 @@
     NSString *result =(NSString *)[resultDic JSONFragment];
     
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeError != null){uexXunfei.onRecognizeError('%@');}",result];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
 
 }
 @end

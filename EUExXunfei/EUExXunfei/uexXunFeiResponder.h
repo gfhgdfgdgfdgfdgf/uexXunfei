@@ -1,18 +1,17 @@
 //
-//  EUExXunfei.h
+//  uexXunFeiResponder.h
 //  EUExXunfei
 //
-//  Created by 黄锦 on 15/12/30.
+//  Created by 黄锦 on 15/12/31.
 //  Copyright © 2015年 AppCan. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
-#import "EUExBase.h"
-
 @class EBrowserView;
-@interface EUExXunfei : EUExBase
 
+@interface uexXunFeiResponder : NSObject
 @property (nonatomic,weak)EBrowserView *specifiedReceiver;
-@property (nonatomic,weak)NSMutableDictionary *specifiedDict;
+
++ (instancetype)sharedResponder;
+
 
 @end
