@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexXunfei" version="3.0.0" build="0">
-        <info>0:新增uexXunfei插件</info>
+        uexName="uexXunfei" version="3.0.1" build="1">
+        <info>1:添加iflyMSC.framework</info>
+        <build>0:新增uexXunfei插件</build>
     </plugin>
 </uexplugins>
