@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0947B71D0EB63900EB503D /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0947B61D0EB63900EB503D /* iflyMSC.framework */; };
 		3C4CD38D1C3532E200E01902 /* uexXunFeiResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4CD38C1C3532E200E01902 /* uexXunFeiResponder.m */; };
 		3C81DF851C337CE90025DD6A /* EUExXunfei.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C81DF841C337CE90025DD6A /* EUExXunfei.m */; };
-		3C81DFC61C33A3030025DD6A /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C81DFC51C33A3030025DD6A /* iflyMSC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3C0947B61D0EB63900EB503D /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		3C4CD3881C35227000E01902 /* EBrowserWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserWindow.h; sourceTree = "<group>"; };
 		3C4CD3891C3522FD00E01902 /* EBrowserWindowContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserWindowContainer.h; sourceTree = "<group>"; };
 		3C4CD38A1C35231500E01902 /* ACEUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEUtils.h; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		3C81DFA81C3381180025DD6A /* SBJsonBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
 		3C81DFA91C3381180025DD6A /* SBJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		3C81DFAA1C3381180025DD6A /* SBJsonWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		3C81DFC51C33A3030025DD6A /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		3C81DFCA1C33AC0B0025DD6A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C81DFC61C33A3030025DD6A /* iflyMSC.framework in Frameworks */,
+				3C0947B71D0EB63900EB503D /* iflyMSC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +130,7 @@
 		3C81DFB51C33A2E40025DD6A /* sourceCode */ = {
 			isa = PBXGroup;
 			children = (
-				3C81DFC51C33A3030025DD6A /* iflyMSC.framework */,
+				3C0947B61D0EB63900EB503D /* iflyMSC.framework */,
 			);
 			path = sourceCode;
 			sourceTree = "<group>";

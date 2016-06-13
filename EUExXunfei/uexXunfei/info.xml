@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexXunfei" version="3.0.1" build="1">
-        <info>1:添加iflyMSC.framework</info>
+        uexName="uexXunfei" version="3.0.2" build="2">
+        <info>2:升级SDK-支持IPv6</info>
+        <build>1:添加iflyMSC.framework</build>
         <build>0:新增uexXunfei插件</build>
     </plugin>
 </uexplugins>
