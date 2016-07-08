@@ -10,8 +10,8 @@
         
         <method name="initRecognizer"></method>
         <method name="startListening"></method>
-        <method name="stopListening"/>
-        <method name="cancelListening"/>
+        <method name="stopListening"></method>
+        <method name="cancelListening"></method>
         
     </plugin>
     

@@ -129,7 +129,7 @@
 
 //合成播放进度
 - (void) onSpeakProgress:(int) progress{
-    
+    NSLog(@"progress:%d",progress);
 }
 
 //合成暂停回调
@@ -229,18 +229,23 @@
  @ param isLast 表示是否最后一次结果
  */
 - (void)onResults: (NSArray *)resultArray isLast:(BOOL) isLast{
-    NSMutableDictionary *result=[NSMutableDictionary dictionary];
+    //NSMutableDictionary *result=[NSMutableDictionary dictionary];
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
     if(resultArray){
-        [result setObject:resultArray forKey:@"text"];
+        NSDictionary *dic = [resultArray objectAtIndex:0];
+        for (NSString *key in dic){
+            [resultStr appendFormat:@"%@",key];//合并结果
+        }
     }
     else{
-        [result setObject:@"" forKey:@"text"];
+        //[result setObject:@"" forKey:@"text"];
     }
-    [result setObject:[NSNumber numberWithBool:isLast] forKey:@"isLast"];
-    
-    NSString * resultString=[result JSONFragment];
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeResult != null){uexXunfei.onRecognizeResult('%@');}",resultString];
+    //[result setObject:[NSNumber numberWithBool:isLast] forKey:@"isLast"];
+//    NSString * resultString=[result JSONFragment];
+    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeResult != null){uexXunfei.onRecognizeResult('%@');}",resultStr];
     [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+
+    
 }
 /*识别会话错误返回代理
  @ param  error 错误码
@@ -251,12 +256,12 @@
     [errDic setObject:error.errorDesc forKey:@"errorDesc"];
     [errDic setObject:@(error.errorType) forKey:@"errorType"];
     
-    NSMutableDictionary *resultDic=[NSMutableDictionary dictionary];
-    [resultDic setObject:errDic forKey:@"error"];
-    NSString *result =(NSString *)[resultDic JSONFragment];
+    //NSMutableDictionary *resultDic=[NSMutableDictionary dictionary];
+    //[resultDic setObject:errDic forKey:@"error"];
+    NSString *result =(NSString *)[errDic JSONFragment];
     
     NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeError != null){uexXunfei.onRecognizeError('%@');}",result];
     [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
-
+    
 }
 @end
