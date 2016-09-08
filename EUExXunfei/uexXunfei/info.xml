@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexXunfei" version="3.0.3" build="3">
-        <info>3:支持语音识别功能</info>
-        <build>2:升级SDK-支持IPv6</build>
-        <build>1:添加iflyMSC.framework</build>
-        <build>0:新增uexXunfei插件</build>
+        uexName="uexXunfei" version="4.0.0" build="0">
+        <info>0:插件4.0</info>
     </plugin>
 </uexplugins>
