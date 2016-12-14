@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215BAAAC1D8001850020A7EA /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215BAAAB1D8001850020A7EA /* AppCanKit.framework */; };
 		3C0947B71D0EB63900EB503D /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C0947B61D0EB63900EB503D /* iflyMSC.framework */; };
 		3C4CD38D1C3532E200E01902 /* uexXunFeiResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4CD38C1C3532E200E01902 /* uexXunFeiResponder.m */; };
 		3C81DF851C337CE90025DD6A /* EUExXunfei.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C81DF841C337CE90025DD6A /* EUExXunfei.m */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		215BAAAB1D8001850020A7EA /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
 		3C0947B61D0EB63900EB503D /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		3C4CD3881C35227000E01902 /* EBrowserWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserWindow.h; sourceTree = "<group>"; };
 		3C4CD3891C3522FD00E01902 /* EBrowserWindowContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EBrowserWindowContainer.h; sourceTree = "<group>"; };
@@ -35,20 +37,10 @@
 		3C81DF821C337CE90025DD6A /* EUExXunfei.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExXunfei.h; sourceTree = "<group>"; };
 		3C81DF841C337CE90025DD6A /* EUExXunfei.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExXunfei.m; sourceTree = "<group>"; };
 		3C81DF9B1C33810B0025DD6A /* EUExBase+Bundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EUExBase+Bundle.h"; sourceTree = "<group>"; };
-		3C81DF9C1C33810B0025DD6A /* EUExBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		3C81DF9D1C33810B0025DD6A /* EUExBaseDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		3C81DF9E1C33810B0025DD6A /* EUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		3C81DF9F1C33810B0025DD6A /* JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		3C81DFA01C33810B0025DD6A /* WidgetOneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WidgetOneDelegate.h; sourceTree = "<group>"; };
-		3C81DFA21C3381180025DD6A /* JSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		3C81DFA31C3381180025DD6A /* JSONParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
-		3C81DFA41C3381180025DD6A /* MD5Digest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MD5Digest.h; sourceTree = "<group>"; };
-		3C81DFA51C3381180025DD6A /* NSObject+SBJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		3C81DFA61C3381180025DD6A /* NSString+SBJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		3C81DFA71C3381180025DD6A /* SBJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		3C81DFA81C3381180025DD6A /* SBJsonBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		3C81DFA91C3381180025DD6A /* SBJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		3C81DFAA1C3381180025DD6A /* SBJsonWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3C81DFCA1C33AC0B0025DD6A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215BAAAC1D8001850020A7EA /* AppCanKit.framework in Frameworks */,
 				3C0947B71D0EB63900EB503D /* iflyMSC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,7 +78,6 @@
 			children = (
 				3C81DFCA1C33AC0B0025DD6A /* PrefixHeader.pch */,
 				3C81DFB51C33A2E40025DD6A /* sourceCode */,
-				3C81DFA11C3381180025DD6A /* JSON */,
 				3C81DF9A1C33810B0025DD6A /* engineHeader */,
 				3C81DF821C337CE90025DD6A /* EUExXunfei.h */,
 				3C81DF841C337CE90025DD6A /* EUExXunfei.m */,
@@ -102,7 +94,6 @@
 				3C4CD3891C3522FD00E01902 /* EBrowserWindowContainer.h */,
 				3C4CD3881C35227000E01902 /* EBrowserWindow.h */,
 				3C81DF9B1C33810B0025DD6A /* EUExBase+Bundle.h */,
-				3C81DF9C1C33810B0025DD6A /* EUExBase.h */,
 				3C81DF9D1C33810B0025DD6A /* EUExBaseDefine.h */,
 				3C81DF9E1C33810B0025DD6A /* EUtility.h */,
 				3C81DF9F1C33810B0025DD6A /* JSON.h */,
@@ -111,25 +102,10 @@
 			path = engineHeader;
 			sourceTree = "<group>";
 		};
-		3C81DFA11C3381180025DD6A /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				3C81DFA21C3381180025DD6A /* JSON.h */,
-				3C81DFA31C3381180025DD6A /* JSONParser.h */,
-				3C81DFA41C3381180025DD6A /* MD5Digest.h */,
-				3C81DFA51C3381180025DD6A /* NSObject+SBJSON.h */,
-				3C81DFA61C3381180025DD6A /* NSString+SBJSON.h */,
-				3C81DFA71C3381180025DD6A /* SBJSON.h */,
-				3C81DFA81C3381180025DD6A /* SBJsonBase.h */,
-				3C81DFA91C3381180025DD6A /* SBJsonParser.h */,
-				3C81DFAA1C3381180025DD6A /* SBJsonWriter.h */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 		3C81DFB51C33A2E40025DD6A /* sourceCode */ = {
 			isa = PBXGroup;
 			children = (
+				215BAAAB1D8001850020A7EA /* AppCanKit.framework */,
 				3C0947B61D0EB63900EB503D /* iflyMSC.framework */,
 			);
 			path = sourceCode;

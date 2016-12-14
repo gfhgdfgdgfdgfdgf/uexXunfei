@@ -7,7 +7,6 @@
 //
 
 #import "EUExXunfei.h"
-#import "JSON/JSON.h"
 #import "EUtility.h"
 #import "iflyMSC/IFlyMSC.h"
 #import "EBrowserWindow.h"
@@ -23,42 +22,39 @@
 
 @implementation EUExXunfei
 
--(id)initWithBrwView:(EBrowserView *)eInBrwView{
-    if (self=[super initWithBrwView:eInBrwView]) {
-        
-    }
-    return self;
-}
 
 -(void)init:(NSMutableArray *)inArguments{
     if(inArguments.count <1){
         return;
     }
-    NSDictionary *info = [inArguments[0] JSONValue];
+    //NSDictionary *info = [inArguments[0] JSONValue];
+    ACArgsUnpack(NSDictionary *info,ACJSFunctionRef *func) = inArguments;
     NSString *appId=[info objectForKey:@"appID"];
     NSMutableDictionary *result=[NSMutableDictionary dictionary];
     if(appId){
         NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",appId];
         [IFlySpeechUtility createUtility:initString];
         [result setObject:[NSNumber numberWithBool:YES] forKey:@"result"];
-        
-        [uexXunFeiResponder sharedResponder].specifiedReceiver=meBrwView;
-        
+        [uexXunFeiResponder sharedResponder].specifiedReceiver = self.webViewEngine;
+        [func executeWithArguments:ACArgsPack(@(0))];
     }
     else{
         [result setObject:[NSNumber numberWithBool:NO] forKey:@"result"];
+        [func executeWithArguments:ACArgsPack(@(1))];
     }
-    [self cbInit:[result JSONFragment]];
+    [self cbInit:[result ac_JSONFragment]];
+    
 }
 - (void)cbInit:(NSString *)obj{
     NSString *result=nil;
     if([obj isKindOfClass:[NSString class]]){
         result=(NSString *)obj;
     }else{
-        result=[obj JSONFragment];
+        result=[obj ac_JSONFragment];
     }
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.cbInit != null){uexXunfei.cbInit('%@');}",result];
-    [EUtility brwView:meBrwView evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.cbInit != null){uexXunfei.cbInit('%@');}",result];
+    //[EUtility brwView:meBrwView evaluateScript:cbStr];
+    [self.webViewEngine callbackWithFunctionKeyPath:@"uexXunfei.cbInit" arguments:ACArgsPack(result)];
 }
 #pragma mark - 语音合成
 -(void)initSpeaker:(NSMutableArray *)inArguments{
@@ -66,7 +62,8 @@
     NSString *volume=@"80";
     NSString *voiceName=@"xiaoyan";
     if(inArguments.count >0){
-        NSDictionary *info = [inArguments[0] JSONValue];
+        //NSDictionary *info = [inArguments[0] JSONValue];
+        ACArgsUnpack(NSDictionary *info) = inArguments;
         if([[info objectForKey:@"speed"] length]){
             speed=[info objectForKey:@"speed"];
         }
@@ -92,7 +89,8 @@
 -(void)startSpeaking:(NSMutableArray *)inArguments{
     NSString *text=@"";
     if(inArguments.count >0){
-        NSDictionary *info = [inArguments[0] JSONValue];
+        //NSDictionary *info = [inArguments[0] JSONValue];
+        ACArgsUnpack(NSDictionary *info) = inArguments;
         if([info objectForKey:@"text"]){
             text=[info objectForKey:@"text"];
         }
@@ -115,13 +113,16 @@
 
 //合成结束
 - (void) onCompleted:(IFlySpeechError *) error{
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakComplete != null){uexXunfei.onSpeakComplete();}"];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakComplete != null){uexXunfei.onSpeakComplete();}"];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onSpeakComplete" arguments:ACArgsPack(nil)];
+    
 }
 //合成开始
 - (void) onSpeakBegin{
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakBegin != null){uexXunfei.onSpeakBegin();}"];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakBegin != null){uexXunfei.onSpeakBegin();}"];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onSpeakBegin" arguments:ACArgsPack(nil)];
 }
 //合成缓冲进度
 - (void) onBufferProgress:(int) progress message:(NSString *)msg{
@@ -134,14 +135,16 @@
 
 //合成暂停回调
 - (void)onSpeakPaused{
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakPaused != null){uexXunfei.onSpeakPaused();}"];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakPaused != null){uexXunfei.onSpeakPaused();}"];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onSpeakPaused" arguments:ACArgsPack(nil)];
 }
 
 //恢复合成回调
 - (void)onSpeakResumed{
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakResumed != null){uexXunfei.onSpeakResumed();}"];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onSpeakResumed != null){uexXunfei.onSpeakResumed();}"];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onSpeakResumed" arguments:ACArgsPack(nil)];
 }
 //取消合成回调
 - (void)onSpeakCancel{
@@ -153,7 +156,8 @@
     NSString *language=@"zh_cn";
     NSString *accent=@"mandarin";
     if(inArguments.count >0){
-        NSDictionary *info = [inArguments[0] JSONValue];
+        //NSDictionary *info = [inArguments[0] JSONValue];
+        ACArgsUnpack(NSDictionary *info) = inArguments;
         if([[info objectForKey:@"domain"] length]){
             domain=[info objectForKey:@"domain"];
         }
@@ -216,13 +220,15 @@
 
 //开始语音识别
 - (void) onBeginOfSpeech{
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onBeginOfSpeech != null){uexXunfei.onBeginOfSpeech();}"];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onBeginOfSpeech != null){uexXunfei.onBeginOfSpeech();}"];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+     [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onBeginOfSpeech" arguments:ACArgsPack(nil)];
 }
 //停止识别回调
 - (void) onEndOfSpeech{
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onEndOfSpeech != null){uexXunfei.onEndOfSpeech();}"];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onEndOfSpeech != null){uexXunfei.onEndOfSpeech();}"];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onEndOfSpeech" arguments:ACArgsPack(nil)];
 }
 /*识别结果返回代理
  @param resultArray 识别结果
@@ -242,9 +248,10 @@
     }
     //[result setObject:[NSNumber numberWithBool:isLast] forKey:@"isLast"];
 //    NSString * resultString=[result JSONFragment];
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeResult != null){uexXunfei.onRecognizeResult('%@');}",resultStr];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
-
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeResult != null){uexXunfei.onRecognizeResult('%@');}",resultStr];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    NSLog(@"%@",resultStr);
+     [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onRecognizeResult" arguments:ACArgsPack(resultStr)];
     
 }
 /*识别会话错误返回代理
@@ -258,10 +265,11 @@
     
     //NSMutableDictionary *resultDic=[NSMutableDictionary dictionary];
     //[resultDic setObject:errDic forKey:@"error"];
-    NSString *result =(NSString *)[errDic JSONFragment];
+    NSString *result =(NSString *)[errDic ac_JSONFragment];
     
-    NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeError != null){uexXunfei.onRecognizeError('%@');}",result];
-    [EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    //NSString *cbStr=[NSString stringWithFormat:@"if(uexXunfei.onRecognizeError != null){uexXunfei.onRecognizeError('%@');}",result];
+    //[EUtility brwView:[uexXunFeiResponder sharedResponder].specifiedReceiver evaluateScript:cbStr];
+    [[uexXunFeiResponder sharedResponder].specifiedReceiver callbackWithFunctionKeyPath:@"uexXunfei.onRecognizeError" arguments:ACArgsPack(result)];
     
 }
 @end

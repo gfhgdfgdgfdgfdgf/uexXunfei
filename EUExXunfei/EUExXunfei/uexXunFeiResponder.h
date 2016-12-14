@@ -9,7 +9,7 @@
 @class EBrowserView;
 
 @interface uexXunFeiResponder : NSObject
-@property (nonatomic,weak)EBrowserView *specifiedReceiver;
+@property (nonatomic, weak) id<AppCanWebViewEngineObject> specifiedReceiver;
 
 + (instancetype)sharedResponder;
 
